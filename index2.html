@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>BubbleBurst</title>
+    <style>
+      * { padding: 0; margin: 0}
+      canvas { background: #eee; display: block; margin: 0 auto; }
+    </style>
+  </head>
+  <body>
+    <canvas id="BubbleBurstCanvas" width="480" height="640"></canvas>
+  </body>
+
+  <script>
+
+
+
+     reference the html element
+    const canvas = document.getElementById("BubbleBurstCanvas");
+     create constant for drawing tool
+    const ctx = canvas.getContext("2d");
+    const bubbleColors = [ "#2EFE2E", "#0040FF", "#FF0000", "#FFFF00", "#7401DF", "#FFFFFF" ];
+     set bubble initial position
+    let x  = canvas.width/2;
+    let y = canvas.height-30;
+     set rate of change (slope/direction of movement)
+    let dx = 1;
+    let dy = -10;
+
+     let bubbleRadius = 10;
+
+    let paddleHeight = 5;
+    let paddleWidth = 50;
+    let paddleX = (canvas.width - paddleWidth)/2;
+
+    let rightPressed = false;
+    let leftPressed = false;
+
+     let bubbleRowCount = 8;
+     let bubbleColumnCount = 25;
+     let bubbleWidth = bubbleRadius*2;
+     let bubbleHeight = bubbleRadius*2;
+     let bubblePadding = 10;
+     let bubbleOffsetTop = 30;
+    let bubbleOffsetLeft = 30;
+
+    let score = 0;
+
+    let lives = 3;
+
+    document.addEventListener( "keydown", keyDownHandler, false )
+    document.addEventListener( "keyup", keyUpHandler, false )
+
+
+    function mouseMoveHandler(e) {
+      let relativeX = e.clientX - canvas.offsetLeft;
+      if ( relativeX > 0 && relativeX < canvas.width ) {
+        paddleX = relativeX - paddleWidth/2;
+      }
+    }
+
+    function keyDownHandler(e) {
+      if ( e.keyCode == 39 ) {
+        rightPressed = true;
+      } else if ( e.keyCode == 37 ) {
+        leftPressed = true;
+      }
+    }
+
+    function keyUpHandler(e) {
+      if ( e.keyCode == 39 ) {
+        rightPressed = false;
+      } else if ( e.keyCode == 37) {
+        leftPressed = false;
+      }
+     }
+
+    bubble drawing logic
+    let bubbles = [];
+    for ( c=0; c < bubbleColumnCount; c++ ) {
+      bubbles[c] = [];
+      for ( r=0; r < bubbleRowCount; r++ ) {
+        bubbles[c][r] = { x: 0, y: 0, status: 1};
+      }
+    }
+
+     function pickBubbleColor(){
+       return bubbleColors[Math.floor(Math.random() * bubbleColors.length)];
+     }
+
+    function drawBubbles(){
+      for ( c=0; c < bubbleColumnCount; c++ ) {
+        for ( r=0; r < bubbleRowCount; r++ ) {
+          if ( bubbles[c][r].status == 1 ) {
+          let bubbleX = ( c*( bubbleWidth )) + bubbleRadius;
+          let bubbleY = ( r*( bubbleHeight )) + bubbleOffsetTop;
+          bubbles[c][r].x = bubbleX;
+          bubbles[c][r].y = bubbleY;
+          ctx.beginPath();
+          ctx.arc(bubbleX, bubbleY, bubbleRadius, 0, Math.PI*2);
+          ctx.fillStyle = pickBubbleColor();
+          ctx.fill();
+          ctx.closePath();
+          }
+        }
+      }
+    }
+
+
+     function drawBubble(){
+       ctx.beginPath();
+       ctx.arc(x, y, bubbleRadius, 0, Math.PI*2);
+       ctx.fillStyle = pickBubbleColor();
+       ctx.fill();
+       ctx.closePath();
+     }
+
+    function drawPaddle(){
+      ctx.beginPath();
+      ctx.rect(paddleX, canvas.height - paddleHeight, paddleWidth, paddleHeight);
+      ctx.fillStyle = "#0095DD";
+      ctx.fill();
+      ctx.closePath();
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawBubbles();
+      drawBubble();
+      drawPaddle();
+      collisionDetection();
+      drawScore();
+      drawLives();
+       bounces bubble off sides
+      if ( x + dx > canvas.width - bubbleRadius || x + dx < bubbleRadius ) {
+        dx = -dx
+      }
+
+       bounces bubble off top
+      if( y + dy < bubbleRadius ) {
+        dy = 0;
+        dx = 0;
+      } else if ( y + dy > canvas.height - bubbleRadius ) {
+        if ( x > paddleX && x < paddleX + paddleWidth ) {
+          dy = -dy;
+        } else {
+          lives--;
+          if ( !lives ) {
+            alert("Game Over");
+            document.location.reload();
+          } else {
+             resets ball
+            x = canvas.width/2;
+            y = canvas.height-30;
+             add eventListener for mouse click to set ball in motion
+            dx = 2;
+            dy = -5;
+            paddleX = ( canvas.width - paddleWidth )/2;
+          }
+        }
+      }
+
+      if ( rightPressed && paddleX < canvas.width - paddleWidth ) {
+        paddleX += 7;
+      }
+
+      if ( leftPressed && paddleX > 0 ) {
+        paddleX -= 7;
+      }
+
+      x += dx;
+      y += dy;
+      requestAnimationFrame(draw);
+    }
+
+  function collisionDetection() {
+    for(c=0; c<bubbleColumnCount; c++) {
+      for(r=0; r<bubbleRowCount; r++) {
+          var b = bubbles[c][r];
+          if ( b.status == 1 ) {
+            if(x > b.x -bubbleRadius && x < b.x+bubbleWidth && y > b.y - bubbleRadius && y < b.y+bubbleHeight) {
+              dy = 0;
+              dx = 0;
+              b.status = 1;
+               score ++;
+               if (score == bubbleRowCount*bubbleColumnCount) {
+                 alert("You Win, Congratulations");
+                 document.location.reload();
+               }
+          }
+        }
+      }
+    }
+  }
+
+  function drawScore() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Score: " + score, 8, 20);
+  }
+
+  function drawLives() {
+    ctx.font = "16px Arial";
+    ctx.fillStyle = "#0095DD";
+    ctx.fillText("Lives: " + lives, canvas.width - 65, 20);
+  }
+    keydown = pressed keyup = let go
+    draw();
+
+  </script>
+</html>
