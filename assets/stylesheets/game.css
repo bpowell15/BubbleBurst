@@ -54,7 +54,7 @@ h2 {
 .rules, .personal-links{
   position: absolute;
   z-index: 1;
-  max-width: 285px;
+  max-width: 285px;;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -64,12 +64,63 @@ h2 {
   padding: 20px;
   line-height: 35px;
   border: 2px solid black;
+  color: white;
+
 }
 
 .rules {
-  left: 70px;
+  right: 72%;
 }
 .personal-links {
-  right: 200px;
+  left: 72%;
   line-height: 50px;
+}
+
+@media (max-width:1300px) {
+  .rules, .personal-links {
+    position: relative;
+    flex-direction: row;
+    justify-content: center;
+    bottom: 0px;
+    align-self: center;
+    left: 0;
+    right: 0;
+    margin: 10px;
+    max-width: max-content;
+  }
+
+  .personal-links {
+    top: -770px;
+    margin-top: 10px;
+  }
+
+  .rules {
+    top: -110px;
+  }
+
+  h1 {
+    margin-bottom: 100px;
+  }
+
+  .main {
+    flex-direction: column;
+  }
+
+  body {
+    background-size: 100vw 100vh;
+  }
+
+}
+
+@media (max-width:600px) {
+  * {font-size: 10px;}
+  h1 {
+    font-size: 50px;
+  }
+  h2 {
+    font-size: 30px;
+  }
+  .rules, .personal-links {
+    padding: 5px;
+  }
 }
