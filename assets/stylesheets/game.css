@@ -11,6 +11,11 @@ body {
   list-style: none;
 }
 
+
+  #BubbleBurstCanvas:hover{
+    cursor: none;
+  }
+
 a {
   color: white;
   text-decoration: none;
@@ -73,10 +78,17 @@ h2 {
 }
 .personal-links {
   left: 72%;
-  line-height: 50px;
+  /* line-height: 50px; */
 }
+/* @media (max-width:1121px){
+  .personal-links {
+    left: none;
+    line-height: none;
+    margin-top: 235px;
+  }
+} */
 
-@media (max-width:1300px) {
+@media (max-width:1121px) {
   .rules, .personal-links {
     position: relative;
     flex-direction: row;
@@ -86,12 +98,25 @@ h2 {
     left: 0;
     right: 0;
     margin: 10px;
-    max-width: max-content;
+    max-width: 450px;
+    min-width: 450px;
   }
 
   .personal-links {
-    top: -770px;
+    top: -820px;
     margin-top: 10px;
+    flex-direction: row;
+  }
+
+  .personal-links ul {
+    display: flex;
+    width: 490px;
+    justify-content: space-evenly;
+
+  }
+
+  #BubbleBurstCanvas{
+    margin-top: 45px;
   }
 
   .rules {
@@ -112,7 +137,7 @@ h2 {
 
 }
 
-@media (max-width:600px) {
+/* @media (max-width:600px) {
   * {font-size: 10px;}
   h1 {
     font-size: 50px;
@@ -123,4 +148,4 @@ h2 {
   .rules, .personal-links {
     padding: 5px;
   }
-}
+} */
