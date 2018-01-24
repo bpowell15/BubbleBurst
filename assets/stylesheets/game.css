@@ -100,8 +100,8 @@ h2 {
     left: 0;
     right: 0;
     margin: 10px;
-    max-width: 450px;
-    min-width: 450px;
+    max-width: 460px;
+    min-width: 460px;
   }
 
   .personal-links {
@@ -112,7 +112,7 @@ h2 {
 
   .personal-links ul {
     display: flex;
-    width: 490px;
+    width: 503px;
     justify-content: space-evenly;
 
   }
