@@ -4,7 +4,10 @@ BubbleBurst is a survival-style bubble shooter game, similar to Bust-a-Move. Pla
 
 ## Instructions
 
-Use the mouse to aim, click to shoot, create clusters of three or more same colored bubbles to clear them from the board and score points. The game is over if the bubbles reach the bottom of the board.
+* Use the mouse to aim
+* Click to shoot
+* Create clusters of three or more same colored bubbles to clear them from the board and score points
+* The game is over if the bubbles reach the bottom of the board.
 
 ## Technologies
 
