@@ -13,7 +13,7 @@ body {
 
 
   #BubbleBurstCanvas:hover{
-    cursor: none;
+    /* cursor: none; */
   }
 
 a {
