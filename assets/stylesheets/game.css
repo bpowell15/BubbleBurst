@@ -6,6 +6,7 @@ body {
   color: white;
 }
 
+
 * {
   padding: 0;
   margin: 0;
@@ -70,7 +71,7 @@ h2 {
   border-radius: 10px;
   padding: 20px;
   line-height: 35px;
-  border: 2px solid black;
+  border: 4px solid black;
   color: white;
 
 }
@@ -90,6 +91,10 @@ h2 {
   }
 } */
 
+.personal-links ul {
+  flex-direction: row;
+}
+
 @media (max-width:1121px) {
   .rules, .personal-links {
     position: relative;
@@ -100,12 +105,12 @@ h2 {
     left: 0;
     right: 0;
     margin: 10px;
-    max-width: 460px;
-    min-width: 460px;
+    max-width: 456px;
+    min-width: 456px;
   }
 
   .personal-links {
-    top: -820px;
+    top: -815px;
     margin-top: 10px;
     flex-direction: row;
   }
