@@ -1,6 +1,6 @@
 # BubbleBurst
 
-### [LIVE](https://www.bubbleburst.bricepowell.com)
+### [LIVE](https://bubbleburst.bricepowell.com)
 
 ![BubbleBurst](./assets/bubbleburst.png "BubbleBurst")
 BubbleBurst is a survival-style bubble shooter game, similar to Bust-a-Move. Players shoot bubbles, with the goal of clearing the board by clustering the bubbles together. Clusters of three or more "burst" and the adventure continues.
@@ -25,6 +25,7 @@ All features of this game were implemented using vanilla JavaScript DOM manipula
 ## BFS Bubble Cluster
 
 A breadth first search algorithm was implemented in order to find clusters of same color bubbles upon collision. As well as to find bubbles which are left "floating" after clusters have been removed.
+
 ![BFS](./assets/bfs.png "BFS")
 ## Future Features
 
