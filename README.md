@@ -25,3 +25,9 @@ A breadth first search algorithm was implemented in order to find clusters of sa
 * Explicit bubble popping animation
 * Difficulty settings
 * High scores
+
+## To Run Locally
+
+* Clone this repo
+* Copy the full path of index.html and paste into your browser
+* Alternatively open your terminal, navigate to the BubbleBurst root folder and type 'open index.html'
