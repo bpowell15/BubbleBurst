@@ -22,11 +22,6 @@ BubbleBurst is a survival-style bubble shooter game, similar to Bust-a-Move. Pla
 
 All features of this game were implemented using vanilla JavaScript DOM manipulation. Drawing was done using HTML5 canvas.
 
-## BFS Bubble Cluster
-
-A breadth first search algorithm was implemented in order to find clusters of same color bubbles upon collision. As well as to find bubbles which are left "floating" after clusters have been removed.
-
-![BFS](./assets/bfs.png "BFS")
 ## Future Features
 
 * Explicit bubble popping animation
