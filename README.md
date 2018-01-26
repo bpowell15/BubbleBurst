@@ -24,6 +24,7 @@ All features of this game were implemented using vanilla JavaScript DOM manipula
 
 ### Calculating shot angle via cursor location
 ![cursorAngle](./assets/cursorgif.gif "cursorAngle")
+
 onMouseMove is triggered every time the cursor is moved around on the canvas. I takes advantage of the basics of trigonometry in order to calculate the angle between the bubble shooter and the cursor. This angle is later used to correctly bounce bubbles off of the walls.
 
 ```javascript
