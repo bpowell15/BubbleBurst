@@ -23,15 +23,62 @@ BubbleBurst is a survival-style bubble shooter game, similar to Bust-a-Move. Pla
 All features of this game were implemented using vanilla JavaScript DOM manipulation. Drawing was done using HTML5 canvas.
 
 ### Calculating shot angle via cursor location
-![onMouseMove](./assets/cursorgif.gif "onMouseMove")
+![cursorAngle](./assets/cursorgif.gif "cursorAngle")
 onMouseMove is triggered every time the cursor is moved around on the canvas. I takes advantage of the basics of trigonometry in order to calculate the angle between the bubble shooter and the cursor. This angle is later used to correctly bounce bubbles off of the walls.
 
-![onMouseMove](./assets/getmouse.png "onMouseMove")
+```javascript
+onMouseMove(e) {
+    let pos = this.getMousePos(e);
+    let mouseangle = this.radToDeg(Math.atan2((this.canvas.height - 15) - pos.y, pos.x - ((this.canvas.width/2))));
+
+    if (mouseangle < 0) {
+        mouseangle = 180 + (180 + mouseangle);
+    }
+    const lbound = 8;
+    const ubound = 172;
+    if (mouseangle > 90 && mouseangle < 270) {
+        if (mouseangle > ubound) {
+            mouseangle = ubound;
+        }
+    } else {
+        if (mouseangle < lbound || mouseangle >= 270) {
+            mouseangle = lbound;
+        }
+    }
+
+    this.angle = mouseangle;
+    this.shooter.loadedBubbles[0].angle = mouseangle;
+  }
+}
+```
+
 
 ### Finding bubble clusters and floaters
 Bubble burst uses a technique similar to Breadth First Search to find clusters of bubbles and remove them from the board. By implementing a First in First out approach, each bubble is asked for its neighbors, which are filtered to be the same color by 'this.findNeighbors'. The current bubble is then pushed into an array of 'seen' bubbles to ensure it does not end up back in the queue, while all of its neighbors are pushed intot he queue so that their neighbors can then be looked at.
 
-![pseudo BFS](./assets/bfs.png "pseudoBFS")
+
+```javascript
+findCluster(bubble){
+  let queue = [bubble];
+  let cluster = [];
+  let seen = [];
+  while (queue.length > 0) {
+    let bubb = queue.shift();
+    cluster.push(bubb);
+    seen.push(bubb);
+    let neighbors = this.findNeighbors(bubb);
+    neighbors.forEach((neighbor)=>{
+      if (
+        seen.includes(neighbor) === false
+         ) {
+           queue.push(neighbor);
+         }
+         seen.push(neighbor);
+    });
+  }
+  return cluster;
+}
+```
 
 ## Future Features
 
