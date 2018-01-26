@@ -23,6 +23,7 @@ BubbleBurst is a survival-style bubble shooter game, similar to Bust-a-Move. Pla
 All features of this game were implemented using vanilla JavaScript DOM manipulation. Drawing was done using HTML5 canvas.
 
 ### Calculating shot angle via cursor location
+![onMouseMove](./assets/cursorgif.gif "onMouseMove")
 onMouseMove is triggered every time the cursor is moved around on the canvas. I takes advantage of the basics of trigonometry in order to calculate the angle between the bubble shooter and the cursor. This angle is later used to correctly bounce bubbles off of the walls.
 
 ![onMouseMove](./assets/getmouse.png "onMouseMove")
