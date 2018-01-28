@@ -55,7 +55,7 @@ onMouseMove(e) {
 
 
 ### Finding bubble clusters and floaters
-Bubble burst uses a technique similar to Breadth First Search to find clusters of bubbles and remove them from the board. By implementing a First in First out approach, each bubble is asked for its neighbors, which are filtered to be the same color by 'this.findNeighbors'. The current bubble is then pushed into an array of 'seen' bubbles to ensure it does not end up back in the queue, while all of its neighbors are pushed intot he queue so that their neighbors can then be looked at.
+Bubble burst uses a technique similar to Breadth First Search to find clusters of bubbles and remove them from the board. By implementing a First in First out approach, each bubble is asked for its neighbors, which are filtered to be the same color by 'this.findNeighbors'. The current bubble is then pushed into an array of 'seen' bubbles to ensure it does not end up back in the queue, while all of its neighbors are pushed into the queue so that their neighbors can then be looked at.
 
 
 ```javascript

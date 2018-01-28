@@ -1,4 +1,14 @@
+#toggleSound{
+  display: block;
+  max-width:30px;
+  max-height:30px;
+  width: auto;
+  height: auto;
+}
 
+#toggleSound:hover{
+  cursor: pointer;
+}
 body {
   background: linear-gradient(to right, #070000, #00BCD4, #070000);
   /* background-image: url("../pic04.jpg"); */

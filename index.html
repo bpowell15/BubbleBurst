@@ -13,7 +13,9 @@
       <!-- <source src="/Users/bricepowell/desktop/JavaScriptProject/BubbleBurst/assets/bustamove.mp3" type="audio/ogg"> -->
       <!-- <p>Your browser doesn't support HTML5 audio. Here is a <a href="viper.mp3">link to the audio</a> instead.</p> -->
     <!-- </audio> -->
-     <embed src="./assets/song.ogg" autostart="true" loop="true" hidden="true">
+    <audio id="myAudio" autoplay loop src="./assets/song.mp3"  loop="true" preload="auto">
+</audio>
+     <!-- <embed src="./assets/song.mp3"   hidden="true"> -->
     <h1>BUBBLE BURST</h1>
       <div class="main">
       <div class="rules">
@@ -23,6 +25,7 @@
           <li>Click to Shoot</li>
           <li>Clear bubbles by targeting and creating clusters of three or more same colored bubbles</li>
         </ul>
+        <i id="toggleSound" class="fa fa-volume-up fa-2x"></i>
       </div>
       <canvas id="BubbleBurstCanvas" width="495" height="640"></canvas>
       <div class="personal-links">
