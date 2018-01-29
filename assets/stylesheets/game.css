@@ -1,12 +1,18 @@
-#toggleSound{
+#toggleSound, #toggleFX{
   display: block;
   max-width:30px;
   max-height:30px;
   width: auto;
   height: auto;
 }
+.sound {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+}
 
-#toggleSound:hover{
+#toggleSound:hover, #toggleFX:hover{
   cursor: pointer;
 }
 body {
