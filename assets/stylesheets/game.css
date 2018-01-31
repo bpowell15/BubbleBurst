@@ -1,3 +1,5 @@
+
+
 #toggleSound, #toggleFX{
   display: block;
   max-width:30px;
@@ -20,6 +22,10 @@ body {
   /* background-image: url("../pic04.jpg"); */
   background-size: 100vw 100vh;
   color: white;
+  min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 
@@ -107,6 +113,12 @@ h2 {
   }
 } */
 
+.author {
+  display: flex;
+  align-self: center;
+  align-items: baseline;
+}
+
 .personal-links ul {
   flex-direction: row;
 }
@@ -124,6 +136,13 @@ h2 {
     max-width: 456px;
     min-width: 456px;
   }
+
+  .sound{
+    display: flex;
+    flex-direction: column;
+  }
+
+
 
   .personal-links {
     top: -815px;
