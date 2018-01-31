@@ -36,9 +36,12 @@ body {
   list-style: none;
 }
 
-
+#BubbleBurstCanvas{
+  padding: 1px;
+}
   #BubbleBurstCanvas:hover{
     /* cursor: none; */
+
   }
 
 a {
@@ -99,10 +102,10 @@ h2 {
 }
 
 .rules {
-  right: 72%;
+  right: 75%;
 }
 .personal-links {
-  left: 72%;
+  left: 78%;
   /* line-height: 50px; */
 }
 /* @media (max-width:1121px){
