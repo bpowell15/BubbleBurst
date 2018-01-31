@@ -13,8 +13,8 @@
       <!-- <source src="/Users/bricepowell/desktop/JavaScriptProject/BubbleBurst/assets/bustamove.mp3" type="audio/ogg"> -->
       <!-- <p>Your browser doesn't support HTML5 audio. Here is a <a href="viper.mp3">link to the audio</a> instead.</p> -->
     <!-- </audio> -->
-    <!-- <audio id="myAudio" autoplay loop src="./assets/song.mp3"  loop="true" preload="auto">
-</audio> -->
+    <audio id="myAudio" autoplay loop src="./assets/bustamove.mp3"  loop="true" preload="auto">
+</audio>
      <!-- <embed src="./assets/song.mp3"   hidden="true"> -->
     <h1>BUBBLE BURST</h1>
       <div class="main">
@@ -40,5 +40,9 @@
       </div>
   </div>
     <script type="application/javascript" src="./lib/bundle.js"></script>
+    <script>
+      var audio = document.getElementById("myAudio");
+      audio.volume = 0.05;
+    </script>
   </body>
 </html>
